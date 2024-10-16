@@ -3,6 +3,7 @@ import SwiftUI
 struct PictureCellView: View {
     let picture: Picture
     @State private var isLiked: Bool
+    @State private var isShowingDetail = false
     
     init(picture: Picture, isLiked: Bool = false) {
         self.picture = picture
@@ -17,7 +18,7 @@ struct PictureCellView: View {
                         .resizable()
                         .scaledToFill()
                         .frame(width: UIScreen.main.bounds.width / 2 - 16, height: UIScreen.main.bounds.width / 2 - 16)  // Ensure square shape
-                        .clipped()  // Ensures no overflow
+                        .clipped()
                         .clipShape(RoundedRectangle(cornerRadius: 10))
                         .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.clear, lineWidth: 1))
                 } placeholder: {
@@ -33,7 +34,7 @@ struct PictureCellView: View {
                     Image(systemName: isLiked ? "heart.fill" : "heart")
                         .resizable()
                         .scaledToFit()
-                        .frame(width: 20, height: 20)  // Adjust heart size
+                        .frame(width: 20, height: 20)
                         .foregroundColor(isLiked ? .red : .white)
                         .padding(8)
                         .background(Circle().fill(Color.black.opacity(0.6)))
@@ -45,6 +46,12 @@ struct PictureCellView: View {
                 .font(.system(size: 14, weight: .medium))
                 .lineLimit(1)
                 .padding([.leading, .bottom, .trailing], 4)
+        }
+        .onTapGesture {
+            isShowingDetail.toggle()
+        }
+        .sheet(isPresented: $isShowingDetail) {
+            DetailedPictureView(picture: picture)
         }
     }
 

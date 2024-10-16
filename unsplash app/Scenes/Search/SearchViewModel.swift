@@ -26,7 +26,7 @@ class SearchViewModel: ObservableObject {
         case .searchTapped:
             pushPictureList()
         case .onAppear:
-//            loadBackground()
+            loadBackground()
             break
         case .onDisappear:
             stopBackgroundLoading()

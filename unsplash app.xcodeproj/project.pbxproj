@@ -8,6 +8,7 @@
 
 /* Begin PBXFileReference section */
 		4C72E9BE2CC03A1100E80CA1 /* unsplash app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "unsplash app.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4C72EA152CC06A2D00E80CA1 /* unsplash app.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = "unsplash app.xcodeproj"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -41,6 +42,13 @@
 			isa = PBXGroup;
 			children = (
 				4C72E9BE2CC03A1100E80CA1 /* unsplash app.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4C72EA172CC06A2D00E80CA1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -97,6 +105,12 @@
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 4C72E9BF2CC03A1100E80CA1 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 4C72EA172CC06A2D00E80CA1 /* Products */;
+					ProjectRef = 4C72EA152CC06A2D00E80CA1 /* unsplash app.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				4C72E9BD2CC03A1100E80CA1 /* unsplash app */,
