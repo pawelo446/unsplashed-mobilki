@@ -6,7 +6,7 @@ class NetworkManager {
     private let cache = NSCache<NSString, NSData>()
     private let decoder: JSONDecoder
     private let baseUrl = "https://api.unsplash.com"
-    private let apiKey = "key"
+    private let apiKey = "bfeknoZmShMsBPmD_6ZNp_0QUtkMcOAX5tP5UiKHDNs"
     
     private init() {
         decoder = JSONDecoder()

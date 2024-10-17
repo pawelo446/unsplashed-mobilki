@@ -6,26 +6,29 @@ struct SearchView: View {
 
     var body: some View {
         NavigationStack {
-            ZStack(alignment: .center) {
-                backgroundView
-                VStack {
-                    Spacer().frame(height: Constants.Layout.verticalPadding)
-                    
-                    logoImage
-                        .frame(width: Constants.Layout.logoSize.width, height: Constants.Layout.logoSize.height)
-                    
-                    Spacer().frame(height: Constants.Spacing.logoToTextField)
-                    
-                    textField
-                    
-                    Spacer()
-                    
-                    searchButton
-                        .frame(height: Constants.Layout.buttonHeight)
-                    
-                    Spacer().frame(height: keyboardResponder.currentHeight > 0 ? keyboardResponder.currentHeight * 0.1 : Constants.Spacing.bottomToButton)
+            GeometryReader { geometry in
+                ZStack(alignment: .center) {
+                    backgroundView
+                        .frame(width: geometry.size.width, height: geometry.size.height)
+                    VStack {
+                        Spacer().frame(height: Constants.Layout.verticalPadding)
+                        
+                        logoImage
+                            .frame(width: Constants.Layout.logoSize.width, height: Constants.Layout.logoSize.height)
+                        
+                        Spacer().frame(height: Constants.Spacing.logoToTextField)
+                        
+                        textField
+                        
+                        Spacer()
+                        
+                        searchButton
+                            .frame(height: Constants.Layout.buttonHeight)
+                        
+                        Spacer().frame(height: keyboardResponder.currentHeight > 0 ? keyboardResponder.currentHeight * 0.1 : Constants.Spacing.bottomToButton)
+                    }
+                    .padding(.horizontal, Constants.Layout.horizontalPadding)
                 }
-                .padding(.horizontal, Constants.Layout.horizontalPadding)
             }
             .onTapGesture {
                 hideKeyboard()
@@ -54,14 +57,16 @@ struct SearchView: View {
 
     @ViewBuilder
     var backgroundView: some View {
-        if let imageData = viewModel.backgroundImage, let uiImage = UIImage(data: imageData) {
-            Image(uiImage: uiImage)
-                .resizable()
-                .scaledToFill()
-                .edgesIgnoringSafeArea(.all)
-        } else {
-            Color.clear.edgesIgnoringSafeArea(.all)
-        }
+            if let imageData = viewModel.backgroundImage, let uiImage = UIImage(data: imageData) {
+                Image(uiImage: uiImage)
+                    .resizable()
+                    .scaledToFill()
+                    .transition(.slide.animation(.easeOut))
+                    .edgesIgnoringSafeArea(.all)
+            } else {
+                Color.clear
+                    .edgesIgnoringSafeArea(.all)
+            }
     }
 
     @ViewBuilder
